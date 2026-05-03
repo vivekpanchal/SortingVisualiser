@@ -21,7 +21,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.vivek.sortingvisualiser.presentation.ui.theme.SortingVisualizerTheme
 
 @Composable
 fun ControlPanel(
@@ -138,6 +140,54 @@ private fun SliderRow(
             steps = steps,
             enabled = enabled,
             modifier = Modifier.weight(1f)
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Idle")
+@Composable
+private fun ControlPanelIdlePreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        ControlPanel(
+            isRunning = false,
+            isPaused = false,
+            isComplete = false,
+            arraySize = 40,
+            speed = 5f,
+            onStart = {}, onPauseResume = {}, onReset = {}, onShuffle = {},
+            onArraySizeChange = {}, onSpeedChange = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Running")
+@Composable
+private fun ControlPanelRunningPreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        ControlPanel(
+            isRunning = true,
+            isPaused = false,
+            isComplete = false,
+            arraySize = 40,
+            speed = 7f,
+            onStart = {}, onPauseResume = {}, onReset = {}, onShuffle = {},
+            onArraySizeChange = {}, onSpeedChange = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Paused")
+@Composable
+private fun ControlPanelPausedPreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        ControlPanel(
+            isRunning = true,
+            isPaused = true,
+            isComplete = false,
+            arraySize = 40,
+            speed = 7f,
+            onStart = {}, onPauseResume = {}, onReset = {}, onShuffle = {},
+            onArraySizeChange = {}, onSpeedChange = {}
         )
     }
 }

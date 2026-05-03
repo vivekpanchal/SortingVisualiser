@@ -15,12 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vivek.sortingvisualiser.presentation.ui.theme.BarComparing
 import com.vivek.sortingvisualiser.presentation.ui.theme.BarDefault
 import com.vivek.sortingvisualiser.presentation.ui.theme.BarPivot
 import com.vivek.sortingvisualiser.presentation.ui.theme.BarSorted
 import com.vivek.sortingvisualiser.presentation.ui.theme.BarSwapping
+import com.vivek.sortingvisualiser.presentation.ui.theme.SortingVisualizerTheme
 
 @Composable
 fun Legend(modifier: Modifier = Modifier) {
@@ -56,5 +58,13 @@ private fun LegendItem(label: String, color: Color) {
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurface
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun LegendPreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        Legend()
     }
 }

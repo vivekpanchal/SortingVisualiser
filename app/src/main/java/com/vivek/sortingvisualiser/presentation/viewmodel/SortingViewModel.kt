@@ -139,5 +139,5 @@ class SortingViewModel : ViewModel() {
 
     // Speed 1 = 500ms delay (slowest), Speed 10 = 10ms delay (fastest)
     private fun speedToDelayMs(speed: Float): Long =
-        (510L - (speed * 50L)).coerceAtLeast(10L)
+        (510L - (speed.toLong() * 50L)).coerceAtLeast(10L)
 }

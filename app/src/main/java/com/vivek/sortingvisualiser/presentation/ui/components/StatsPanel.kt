@@ -14,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vivek.sortingvisualiser.domain.model.AlgorithmType
+import com.vivek.sortingvisualiser.presentation.ui.theme.SortingVisualizerTheme
 
 @Composable
 fun StatsPanel(
@@ -95,6 +97,36 @@ private fun StatItem(label: String, value: String) {
             text = label,
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "In Progress")
+@Composable
+private fun StatsPanelInProgressPreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        StatsPanel(
+            comparisons = 128,
+            swaps = 64,
+            elapsedTimeMs = 342,
+            algorithm = AlgorithmType.QUICK_SORT,
+            currentDescription = "Partitioning around pivot 42",
+            isComplete = false
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Complete")
+@Composable
+private fun StatsPanelCompletePreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        StatsPanel(
+            comparisons = 256,
+            swaps = 128,
+            elapsedTimeMs = 1024,
+            algorithm = AlgorithmType.MERGE_SORT,
+            currentDescription = "",
+            isComplete = true
         )
     }
 }

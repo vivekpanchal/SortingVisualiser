@@ -9,8 +9,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vivek.sortingvisualiser.domain.model.AlgorithmType
+import com.vivek.sortingvisualiser.presentation.ui.theme.SortingVisualizerTheme
 
 @Composable
 fun AlgorithmSelector(
@@ -37,5 +39,29 @@ fun AlgorithmSelector(
                 }
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AlgorithmSelectorPreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        AlgorithmSelector(
+            selectedAlgorithm = AlgorithmType.BUBBLE_SORT,
+            enabled = true,
+            onAlgorithmSelected = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Disabled")
+@Composable
+private fun AlgorithmSelectorDisabledPreview() {
+    SortingVisualizerTheme(dynamicColor = false) {
+        AlgorithmSelector(
+            selectedAlgorithm = AlgorithmType.QUICK_SORT,
+            enabled = false,
+            onAlgorithmSelected = {}
+        )
     }
 }
