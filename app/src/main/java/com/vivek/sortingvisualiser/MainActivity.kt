@@ -1,20 +1,20 @@
 package com.vivek.sortingvisualiser
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import com.vivek.sortingvisualiser.presentation.ui.screen.SortingScreen
+import com.vivek.sortingvisualiser.presentation.ui.theme.SortingVisualizerTheme
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        btn_sort.setOnClickListener {
-            sort_view.swap()
-        }
-
-        btn_suffle.setOnClickListener {
-            sort_view.shuffle()
+        enableEdgeToEdge()
+        setContent {
+            SortingVisualizerTheme {
+                SortingScreen()
+            }
         }
     }
 }
